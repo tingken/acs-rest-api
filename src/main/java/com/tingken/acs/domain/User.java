@@ -3,9 +3,16 @@
  *----------------------------------------------------------------------------*/
 package com.tingken.acs.domain;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.springframework.data.rest.core.annotation.RestResource;
 
 @Entity(name = "users")
 public class User {
@@ -15,9 +22,12 @@ public class User {
     private String name;
     private String email;
     @Column(nullable = false)
+    @RestResource(exported = false)
     private String password;
     @Column(nullable = false)
     private boolean enabled;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<Authority> authorities;
 
     // standard getters and setters
 
@@ -61,5 +71,33 @@ public class User {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return Returns the enabled.
+     */
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    /**
+     * @param enabled The enabled to set.
+     */
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    /**
+     * @return Returns the authorities.
+     */
+    public Set<Authority> getAuthorities() {
+        return authorities;
+    }
+
+    /**
+     * @param authorities The authorities to set.
+     */
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
     }
 }

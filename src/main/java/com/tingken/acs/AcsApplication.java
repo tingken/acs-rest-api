@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tingken.acs.auth.AuthFilter;
 import com.tingken.acs.auth.AuthInterceptor;
 
@@ -19,6 +20,12 @@ public class AcsApplication implements WebMvcConfigurer{
     @Bean
     public AuthInterceptor authInterceptor() {
         return new AuthInterceptor();
+    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper;
     }
 
     @Bean

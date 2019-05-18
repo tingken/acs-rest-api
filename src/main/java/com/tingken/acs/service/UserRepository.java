@@ -12,6 +12,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.tingken.acs.domain.User;
 
 //@RepositoryRestResource(collectionResourceRel = "users", path = "users")
-public interface UserRepository extends PagingAndSortingRepository<User, Long> {
+public interface UserRepository extends PagingAndSortingRepository<User, String> {
     List<User> findByName(@Param("name") String name);
 }

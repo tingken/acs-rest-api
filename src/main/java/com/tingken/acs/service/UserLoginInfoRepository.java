@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tingken.acs.domain.UserLoginInfo;
 
-@RepositoryRestResource(collectionResourceRel = "user_login_info", path = "UserLoginInfo")
+@RepositoryRestResource(collectionResourceRel = "user_login_info", path = "userLoginInfo")
 public interface UserLoginInfoRepository extends PagingAndSortingRepository<UserLoginInfo, Long> {
     //    List<UserLoginInfo> findByUserName(@Param("name") String name);
     //

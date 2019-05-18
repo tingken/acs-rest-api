@@ -11,14 +11,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
- * The purpose of this class is ...
- * TODO javadoc for class Authoritie
+ * This class is an entity bean for authority.
  */
 @Entity(name = "authorities")
-public class Authoritie {
+public class Authority {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne(optional = false)
@@ -28,10 +27,9 @@ public class Authoritie {
     private String authority;
 
     /**
-     * Creates a new instance of <code>Authoritie</code>.
-     * TODO javadoc for Authoritie constructor.
+     * Creates a new instance of <code>Authority</code>.
      */
-    public Authoritie() {
+    public Authority() {
         // TODO Auto-generated constructor stub
     }
 
