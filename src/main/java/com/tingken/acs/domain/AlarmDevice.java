@@ -3,20 +3,23 @@
  *----------------------------------------------------------------------------*/
 package com.tingken.acs.domain;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
- * The purpose of this class is ...
- * TODO javadoc for class AlarmDevice
+ * This class is an entity bean to save information related to alarm
+ * device.
  */
 @Entity
 public class AlarmDevice {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String name;
@@ -24,6 +27,8 @@ public class AlarmDevice {
     private String status;
     private String ip;
     private String deviceDesc;
+    @ManyToMany(targetEntity = AlarmNotice.class, mappedBy = "alarmDevices")
+    private Set<AlarmNotice> notices;
 
     /**
      * Creates a new instance of <code>AlarmDevice</code>.
@@ -101,6 +106,20 @@ public class AlarmDevice {
      */
     public void setDeviceDesc(String deviceDesc) {
         this.deviceDesc = deviceDesc;
+    }
+
+    /**
+     * @return Returns the notices.
+     */
+    public Set<AlarmNotice> getNotices() {
+        return notices;
+    }
+
+    /**
+     * @param notices The notices to set.
+     */
+    public void setNotices(Set<AlarmNotice> notices) {
+        this.notices = notices;
     }
 
 }

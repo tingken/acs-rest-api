@@ -14,6 +14,9 @@ import javax.persistence.OneToMany;
 
 import org.springframework.data.rest.core.annotation.RestResource;
 
+/**
+ * This class is an entity bean to save information related to user.
+ */
 @Entity(name = "users")
 public class User {
 

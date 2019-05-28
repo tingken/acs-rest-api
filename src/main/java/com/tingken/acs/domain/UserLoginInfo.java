@@ -12,14 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 /**
- * The purpose of this class is ...
- * TODO javadoc for class UserLoginInfo
+ * This class is an entity bean to save information related to login
+ * information of users.
  */
 @Entity
 public class UserLoginInfo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne

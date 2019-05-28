@@ -60,7 +60,8 @@ public class JdbcSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(new BCryptPasswordEncoder());
-        //        .withUser("user").password(new BCryptPasswordEncoder().encode("password")).roles("USER");
+//                .withUser("user").password(new BCryptPasswordEncoder().encode("password")).roles("USER").and()
+//                .withUser("admin").password(new BCryptPasswordEncoder().encode("password")).roles("ADMIN");
         //        super.configure(auth);
     }
 

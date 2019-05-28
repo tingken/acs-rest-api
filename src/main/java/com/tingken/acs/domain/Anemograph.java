@@ -7,16 +7,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.Table;
 
 /**
- * The purpose of this class is ...
- * TODO javadoc for class Anemograph
+ * This class is an entity bean to save information related to
+ * anemometer.
  */
 @Entity
+@Table(indexes = @Index(columnList = "name", unique = true))
 public class Anemograph {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String name;

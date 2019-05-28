@@ -8,7 +8,8 @@ spring:
     url: jdbc:mysql://localhost:3306/acs
     username: root
     password: skillpier123
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #com.mysql.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update

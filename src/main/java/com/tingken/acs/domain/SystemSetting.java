@@ -10,13 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * The purpose of this class is ...
- * TODO javadoc for class SystemSetting
+ * This class is an entity to save information related to system
+ * configuration.
  */
 @Entity
 public class SystemSetting {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(unique = true)

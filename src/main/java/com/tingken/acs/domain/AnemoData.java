@@ -12,14 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 /**
- * The purpose of this class is ...
- * TODO javadoc for class AnemoData
+ * This class is an entity bean to save information related to data
+ * from anemometer.
  */
 @Entity
 public class AnemoData {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private double windSpeed;

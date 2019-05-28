@@ -5,6 +5,7 @@ package com.tingken.acs.domain;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
@@ -12,10 +13,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 /**
- * The purpose of this class is ...
- * TODO javadoc for class AlamType
+ * This class is an entity bean to save information related to alarm
+ * plan.
  */
 @Entity
 public class AlarmPlan {
@@ -23,19 +25,21 @@ public class AlarmPlan {
         NORMAL, PENDING, DELETED
     }
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String name;
-    private int threshold;
+    private Float threshold;
     private String alarmContent;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<AlarmDevice> alarmDevices;
     private String alarmDeviceTermIdPattern;
-    private int volume;
+    private Integer volume;
     @Enumerated
-    private Status status;
-    
+    private Status status = Status.NORMAL;
+    private int priority;
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "plan")
+    private Set<AlarmNotice> alarmNotices;
 
     /**
      * Creates a new instance of <code>AlamType</code>.
@@ -62,14 +66,14 @@ public class AlarmPlan {
     /**
      * @return Returns the threshold.
      */
-    public int getThreshold() {
+    public float getThreshold() {
         return threshold;
     }
 
     /**
      * @param threshold The threshold to set.
      */
-    public void setThreshold(int threshold) {
+    public void setThreshold(float threshold) {
         this.threshold = threshold;
     }
 
@@ -118,7 +122,7 @@ public class AlarmPlan {
     /**
      * @return Returns the volume.
      */
-    public int getVolume() {
+    public Integer getVolume() {
         return volume;
     }
 
@@ -141,6 +145,20 @@ public class AlarmPlan {
      */
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    /**
+     * @return Returns the priority.
+     */
+    public int getPriority() {
+        return priority;
+    }
+
+    /**
+     * @param priority The priority to set.
+     */
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
 }

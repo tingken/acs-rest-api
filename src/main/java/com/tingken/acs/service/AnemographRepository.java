@@ -13,5 +13,5 @@ import com.tingken.acs.domain.Anemograph;
 
 @RepositoryRestResource(collectionResourceRel = "anemograph", path = "anemographs")
 public interface AnemographRepository extends PagingAndSortingRepository<Anemograph, Long> {
-    List<Anemograph> findByName(@Param("name") String name);
+    Anemograph findByName(@Param("name") String name);
 }

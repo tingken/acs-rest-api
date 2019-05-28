@@ -15,21 +15,21 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 /**
- * The purpose of this class is ...
- * TODO javadoc for class AlarmNotice
+ * This class is an entity bean to save information related to alarm
+ * notice.
  */
 @Entity
 public class AlarmNotice {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne
     private AlarmPlan plan;
     private String noticeContent;
     private Date noticeTime;
-    private double value;
-    private double threshold;
+    private Float value;
+    private Float threshold;
     @ElementCollection
     private Set<String> deviceNames;
     @ManyToMany(targetEntity = AlarmNotice.class)
@@ -37,10 +37,22 @@ public class AlarmNotice {
 
     /**
      * Creates a new instance of <code>AlarmNotice</code>.
-     * TODO javadoc for AlarmNotice constructor.
      */
     public AlarmNotice() {
-        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     * @return Returns the id.
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * @param id The id to set.
+     */
+    public void setId(long id) {
+        this.id = id;
     }
 
     /**
@@ -88,28 +100,28 @@ public class AlarmNotice {
     /**
      * @return Returns the value.
      */
-    public double getValue() {
+    public Float getValue() {
         return value;
     }
 
     /**
      * @param value The value to set.
      */
-    public void setValue(double value) {
+    public void setValue(Float value) {
         this.value = value;
     }
 
     /**
      * @return Returns the threshold.
      */
-    public double getThreshold() {
+    public Float getThreshold() {
         return threshold;
     }
 
     /**
      * @param threshold The threshold to set.
      */
-    public void setThreshold(double threshold) {
+    public void setThreshold(Float threshold) {
         this.threshold = threshold;
     }
 
