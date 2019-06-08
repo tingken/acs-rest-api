@@ -29,6 +29,7 @@ public class AlarmDevice {
     private String deviceDesc;
     @ManyToMany(targetEntity = AlarmNotice.class, mappedBy = "alarmDevices")
     private Set<AlarmNotice> notices;
+    private String address;
 
     /**
      * Creates a new instance of <code>AlarmDevice</code>.
@@ -120,6 +121,20 @@ public class AlarmDevice {
      */
     public void setNotices(Set<AlarmNotice> notices) {
         this.notices = notices;
+    }
+
+    /**
+     * @return Returns the address.
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * @param address The address to set.
+     */
+    public void setAddress(String address) {
+        this.address = address;
     }
 
 }
