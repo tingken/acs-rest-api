@@ -31,6 +31,8 @@ public class User {
     private boolean enabled;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Authority> authorities;
+    private String nickname;
+    private String userDesc;
 
     // standard getters and setters
 
@@ -102,5 +104,33 @@ public class User {
      */
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    /**
+     * @return Returns the nickname.
+     */
+    public String getNickname() {
+        return nickname;
+    }
+
+    /**
+     * @param nickname The nickname to set.
+     */
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    /**
+     * @return Returns the userDesc.
+     */
+    public String getUserDesc() {
+        return userDesc;
+    }
+
+    /**
+     * @param userDesc The userDesc to set.
+     */
+    public void setUserDesc(String userDesc) {
+        this.userDesc = userDesc;
     }
 }
