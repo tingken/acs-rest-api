@@ -33,10 +33,8 @@ public class AlarmDevice {
 
     /**
      * Creates a new instance of <code>AlarmDevice</code>.
-     * TODO javadoc for AlarmDevice constructor.
      */
     public AlarmDevice() {
-        // TODO Auto-generated constructor stub
     }
 
     /**

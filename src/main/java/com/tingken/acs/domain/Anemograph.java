@@ -29,10 +29,8 @@ public class Anemograph {
 
     /**
      * Creates a new instance of <code>Anemograph</code>.
-     * TODO javadoc for Anemograph constructor.
      */
     public Anemograph() {
-        // TODO Auto-generated constructor stub
     }
 
     /**

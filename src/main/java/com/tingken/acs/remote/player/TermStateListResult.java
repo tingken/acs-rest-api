@@ -19,6 +19,9 @@ public class TermStateListResult extends PlayerResult {
         private String name;
         @JsonProperty("IP")
         private String ip;
+        /**
+         * -1: offline, 0: idle, 1: busy.
+         */
         @JsonProperty("Status")
         private int status;
         @JsonProperty("WorkStatus")

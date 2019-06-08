@@ -31,10 +31,8 @@ public class UserLoginInfo {
 
     /**
      * Creates a new instance of <code>UserLoginInfo</code>.
-     * TODO javadoc for UserLoginInfo constructor.
      */
     public UserLoginInfo() {
-        // TODO Auto-generated constructor stub
     }
 
     /**

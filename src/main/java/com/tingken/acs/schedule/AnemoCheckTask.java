@@ -45,8 +45,8 @@ import com.tingken.acs.service.SystemSettingRepository;
  * data for making alarm notices.
  */
 @Component
-@Configuration //1.主要用于标记配置类，兼备Component的效果。
-@EnableScheduling // 2.开启定时任务
+@Configuration
+@EnableScheduling
 public class AnemoCheckTask implements SchedulingConfigurer {
 
     @Resource
@@ -79,18 +79,18 @@ public class AnemoCheckTask implements SchedulingConfigurer {
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
 
         taskRegistrar.addTriggerTask(
-                //1.添加任务内容(Runnable)
+                // task content
                 () -> checkAnemoData(),
-                //2.设置执行周期(Trigger)
+                // set task schedule
                 triggerContext -> {
-                    //2.1 从数据库获取执行周期
+                    // get configuration
                     String cron = systemSettingRepository.findByConfigName(Constants.ANEMO_ALARM_CHECK_CRON).getValue();
-                    //2.2 合法性校验.
+                    // verify configuration
                     if (StringUtils.isEmpty(cron)) {
                         logger.error(
                                 "The system configuration '" + Constants.ANEMO_ALARM_CHECK_CRON + "' IS EMPTY now");
                     }
-                    //2.3 返回执行周期(Date)
+                    // return schedule
                     return new CronTrigger(cron).nextExecutionTime(triggerContext);
                 });
     }

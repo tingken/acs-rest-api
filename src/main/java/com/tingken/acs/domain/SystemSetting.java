@@ -27,7 +27,6 @@ public class SystemSetting {
 
     /**
      * Creates a new instance of <code>SystemSetting</code>.
-     * TODO javadoc for SystemSetting constructor.
      */
     public SystemSetting() {
     }

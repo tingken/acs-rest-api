@@ -29,10 +29,8 @@ public class AnemoData {
 
     /**
      * Creates a new instance of <code>AnemoData</code>.
-     * TODO javadoc for AnemoData constructor.
      */
     public AnemoData() {
-        // TODO Auto-generated constructor stub
     }
 
     /**
