@@ -3,6 +3,7 @@
  *----------------------------------------------------------------------------*/
 package com.tingken.acs.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,13 +25,21 @@ public class Authority {
     @JoinColumn(name = "username", nullable = false)
     private User user;
 
-    private String authority;
+    @Column(name = "authority")
+    private String role;
 
     /**
      * Creates a new instance of <code>Authority</code>.
      */
     public Authority() {
-        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     * Creates a new instance of <code>Authority</code>.
+     */
+    public Authority(User user, String role) {
+        this.user = user;
+        this.role = role;
     }
 
     /**
@@ -50,15 +59,15 @@ public class Authority {
     /**
      * @return Returns the authority.
      */
-    public String getAuthority() {
-        return authority;
+    public String getRole() {
+        return role;
     }
 
     /**
      * @param authority The authority to set.
      */
-    public void setAuthority(String authority) {
-        this.authority = authority;
+    public void setRole(String role) {
+        this.role = role;
     }
 
 }

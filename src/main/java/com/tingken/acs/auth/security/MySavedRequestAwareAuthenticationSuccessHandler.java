@@ -63,7 +63,7 @@ public class MySavedRequestAwareAuthenticationSuccessHandler extends SimpleUrlAu
             body.put("username", user.getName());
             List<String> roles = new ArrayList<String>();
             for (Authority authority : user.getAuthorities()) {
-                roles.add(authority.getAuthority());
+                roles.add(authority.getRole());
             }
             System.out.println("roles:" + roles);
             body.put("roles", roles);
