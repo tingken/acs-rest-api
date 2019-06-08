@@ -3,6 +3,7 @@ package com.tingken.acs.auth.security;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,6 +54,7 @@ public class MySavedRequestAwareAuthenticationSuccessHandler extends SimpleUrlAu
             UserLoginInfo info = new UserLoginInfo();
             User user = userRepository.findById(authentication.getName()).get();
             info.setUser(user);
+            info.setLogDate(new Date());
             info.setToken(MD5Util.string2MD5(user.getName() + System.currentTimeMillis()));
             userLoginInfoRepository.save(info);
             response.setStatus(HttpServletResponse.SC_CREATED);
