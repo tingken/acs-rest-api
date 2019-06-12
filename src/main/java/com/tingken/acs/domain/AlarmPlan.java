@@ -23,7 +23,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class AlarmPlan {
     public enum Status {
-        NORMAL, PENDING, DELETED
+        NORMAL, PENDING, DISABLED, DELETED
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

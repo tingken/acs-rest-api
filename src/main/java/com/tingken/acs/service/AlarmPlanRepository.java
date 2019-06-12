@@ -14,8 +14,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.tingken.acs.domain.AlarmPlan;
+import com.tingken.acs.service.customize.AlarmPlanProjection;
 
-@RepositoryRestResource(collectionResourceRel = "alarm_plan", path = "alarmPlans")
+@RepositoryRestResource(collectionResourceRel = "alarm_plan", path = "alarmPlans", excerptProjection = AlarmPlanProjection.class)
 public interface AlarmPlanRepository extends PagingAndSortingRepository<AlarmPlan, Long> {
     List<AlarmPlan> findByName(@Param("name") String name);
 
