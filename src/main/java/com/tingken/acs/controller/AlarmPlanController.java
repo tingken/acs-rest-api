@@ -3,6 +3,7 @@
  *----------------------------------------------------------------------------*/
 package com.tingken.acs.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -49,7 +50,7 @@ public class AlarmPlanController {
     }
 
     @PostMapping("/{id}/play")
-    public ResponseEntity<Map<String, Object>> play(@PathVariable("id") long id) {
+    public ResponseEntity<Map<String, Object>> play(@PathVariable("id") long id, Principal principal) {
         Map<String, Object> result = new HashMap<String, Object>();
         AlarmPlan plan = alarmPlanRepository.findById(id).get();
         if (plan.getThreshold() != null) {
@@ -81,6 +82,7 @@ public class AlarmPlanController {
                 notice.setNoticeContent(plan.getAlarmContent());
                 notice.setNoticeTime(new Date());
                 notice.setPlan(plan);
+                notice.setSenderName(principal.getName());
                 alarmNoticeRepository.save(notice);
             }
             result.put("error", playerResult.getRet());

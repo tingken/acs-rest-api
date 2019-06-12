@@ -34,6 +34,7 @@ public class AlarmNotice {
     private Set<String> deviceNames;
     @ManyToMany(targetEntity = AlarmNotice.class)
     private Set<AlarmDevice> alarmDevices;
+    private String senderName;
 
     /**
      * Creates a new instance of <code>AlarmNotice</code>.
@@ -151,6 +152,20 @@ public class AlarmNotice {
      */
     public void setAlarmDevices(Set<AlarmDevice> alarmDevices) {
         this.alarmDevices = alarmDevices;
+    }
+
+    /**
+     * @return Returns the senderName.
+     */
+    public String getSenderName() {
+        return senderName;
+    }
+
+    /**
+     * @param senderName The senderName to set.
+     */
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
     }
 
 }
