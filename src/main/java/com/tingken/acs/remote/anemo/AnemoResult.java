@@ -233,7 +233,7 @@ public class AnemoResult {
     }
 
     public static class Data {
-        private AnemoDataItem[] array;
+        private AnemoDataItem[] array = new AnemoDataItem[0];
 
         public AnemoDataItem[] getArray() {
             return array;
@@ -246,7 +246,7 @@ public class AnemoResult {
 
     private int errcode;
     private String errmsg;
-    Data DataObject;
+    Data DataObject = new Data();
 
     // Getter Methods 
 

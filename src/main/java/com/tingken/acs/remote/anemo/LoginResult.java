@@ -134,7 +134,7 @@ public class LoginResult {
 
     private int errcode;
     private String errmsg;
-    Data DataObject;
+    Data DataObject = new Data();
 
     // Getter Methods 
 
