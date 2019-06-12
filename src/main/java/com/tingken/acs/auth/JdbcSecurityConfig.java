@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -59,9 +60,9 @@ public class JdbcSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(new BCryptPasswordEncoder());
-//                .withUser("user").password(new BCryptPasswordEncoder().encode("password")).roles("USER").and()
-//                .withUser("admin").password(new BCryptPasswordEncoder().encode("password")).roles("ADMIN");
+        auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(passwordEncoder());
+//                .withUser("user").password(passwordEncoder().encode("password")).roles("USER").and()
+//                .withUser("admin").password(passwordEncoder().encode("password")).roles("ADMIN");
         //        super.configure(auth);
     }
 
@@ -89,6 +90,11 @@ public class JdbcSecurityConfig extends WebSecurityConfigurerAdapter {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }
