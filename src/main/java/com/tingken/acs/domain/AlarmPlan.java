@@ -6,6 +6,7 @@ package com.tingken.acs.domain;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
@@ -40,6 +41,8 @@ public class AlarmPlan {
     private int priority;
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "plan")
     private Set<AlarmNotice> alarmNotices;
+    @Column(columnDefinition = "INT(11) NOT NULL DEFAULT 3")
+    private int repeatTime = 3;
 
     /**
      * Creates a new instance of <code>AlamType</code>.
@@ -159,6 +162,20 @@ public class AlarmPlan {
      */
     public void setPriority(int priority) {
         this.priority = priority;
+    }
+
+    /**
+     * @return Returns the repeatTime.
+     */
+    public int getRepeatTime() {
+        return repeatTime;
+    }
+
+    /**
+     * @param repeatTime The repeatTime to set.
+     */
+    public void setRepeatTime(int repeatTime) {
+        this.repeatTime = repeatTime;
     }
 
 }

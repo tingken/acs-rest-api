@@ -123,7 +123,7 @@ public class AnemoCheckTask implements SchedulingConfigurer {
             if (devices != null) {
                 TextPlayInfo req = new TextPlayInfo();
                 req.setContent(plan.getAlarmContent());
-                req.setPlaytime(3);
+                req.setPlaytime(plan.getRepeatTime());
                 req.setPlayPrior(plan.getPriority());
                 ArrayList<Integer> targetIdList = new ArrayList<Integer>(devices.size());
                 Set<String> deviceNames = new HashSet<String>();
