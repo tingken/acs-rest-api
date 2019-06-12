@@ -66,14 +66,14 @@ public class AlarmPlan {
     /**
      * @return Returns the threshold.
      */
-    public float getThreshold() {
+    public Float getThreshold() {
         return threshold;
     }
 
     /**
      * @param threshold The threshold to set.
      */
-    public void setThreshold(float threshold) {
+    public void setThreshold(Float threshold) {
         this.threshold = threshold;
     }
 
