@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +27,7 @@ import com.tingken.acs.remote.player.TermIdListResult;
 import com.tingken.acs.remote.player.TermStateListResult;
 import com.tingken.acs.remote.player.TermStateListResult.TermState;
 import com.tingken.acs.service.AlarmDeviceRepository;
+import com.tingken.acs.service.around.LicenceValidateTool;
 
 @RestController
 @RequestMapping("/acs/api/v1/alarmDevices")
@@ -36,6 +36,8 @@ public class AlarmDeviceController {
     AlarmDeviceRepository alarmDeviceRepository;
     @Autowired
     PlayerApi playerApi;
+    @Autowired
+    LicenceValidateTool licenceValidateTool;
 
     public AlarmDeviceController() {
     }
@@ -54,7 +56,9 @@ public class AlarmDeviceController {
                         device.setIp(state.getIp());
                         device.setTermId(state.getId());
                         device.setDeviceDesc(state.getName());
-                        alarmDeviceRepository.save(device);
+                        if (licenceValidateTool.isValid(device)) {
+                            alarmDeviceRepository.save(device);
+                        }
                     }
                 }
             }

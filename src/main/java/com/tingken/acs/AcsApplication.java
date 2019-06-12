@@ -7,15 +7,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.rest.core.event.ValidatingRepositoryEventListener;
+import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tingken.acs.auth.AuthFilter;
 import com.tingken.acs.auth.AuthInterceptor;
+import com.tingken.acs.service.around.AlarmDeviceValidator;
 
 @SpringBootApplication
-public class AcsApplication implements WebMvcConfigurer{
+public class AcsApplication implements WebMvcConfigurer, RepositoryRestConfigurer {
 
     @Bean
     public AuthInterceptor authInterceptor() {
@@ -50,6 +53,16 @@ public class AcsApplication implements WebMvcConfigurer{
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authInterceptor()).addPathPatterns("/**");
         WebMvcConfigurer.super.addInterceptors(registry);
+    }
+
+    @Override
+    public void configureValidatingRepositoryEventListener(ValidatingRepositoryEventListener validatingListener) {
+        validatingListener.addValidator("beforeCreate", alarmDeviceValidator());
+    }
+
+    @Bean
+    AlarmDeviceValidator alarmDeviceValidator() {
+        return new AlarmDeviceValidator();
     }
 
 }
