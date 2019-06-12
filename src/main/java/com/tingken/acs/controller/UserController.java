@@ -24,7 +24,7 @@ import com.tingken.acs.service.UserRepository;
 import com.tingken.acs.util.MD5Util;
 
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/acs/api/v1")
 public class UserController {
     @Resource
     UserRepository userRepository;

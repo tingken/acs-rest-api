@@ -1,7 +1,7 @@
 server:
   port: 8081
-  servlet:
-    context-path: /acs
+#  servlet:
+#    context-path: /acs
 
 spring:
   datasource:
@@ -18,3 +18,7 @@ spring:
   logging:
     level:
       com.tingken: debug
+
+  data:
+    rest:
+      basePath: /acs

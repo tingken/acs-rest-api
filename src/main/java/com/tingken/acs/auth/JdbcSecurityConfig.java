@@ -70,10 +70,10 @@ public class JdbcSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         //        super.configure(http);
         http.cors().and().csrf().disable().authorizeRequests().antMatchers("/systemSettings/**").hasRole("ADMIN")
-                .antMatchers("/login*").permitAll()
-                .anyRequest().authenticated().and().exceptionHandling()
+                .antMatchers("/**/login*").permitAll()
+                .antMatchers("/acs/**").authenticated().and().exceptionHandling()
                 .accessDeniedHandler(accessDeniedHandler).authenticationEntryPoint(restAuthenticationEntryPoint).and()
-                .formLogin().loginPage("/login.html").loginProcessingUrl("/perform_login")
+                .formLogin().loginPage("/login.html").loginProcessingUrl("/acs/perform_login")
                 .successHandler(mySuccessHandler)
                 .failureHandler(myFailureHandler)
                 .and().httpBasic();

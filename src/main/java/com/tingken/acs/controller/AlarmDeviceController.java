@@ -20,7 +20,7 @@ import com.tingken.acs.remote.player.TermStateListResult.TermState;
 import com.tingken.acs.service.AlarmDeviceRepository;
 
 @RestController
-@RequestMapping("/api/v1/alarmDevices")
+@RequestMapping("/acs/api/v1/alarmDevices")
 public class AlarmDeviceController {
     @Resource
     AlarmDeviceRepository alarmDeviceRepository;
