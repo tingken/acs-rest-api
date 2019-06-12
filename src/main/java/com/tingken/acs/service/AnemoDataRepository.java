@@ -19,6 +19,6 @@ public interface AnemoDataRepository extends PagingAndSortingRepository<AnemoDat
     //    Page<AnemoData> findByDate(@Param("year") String year, @Param("month") String month, @Param("day") String day,
     //            @Param("page") int page, @Param("size") int size);
 
-    @Query("SELECT MAX(d.windSpeed) FROM AnemoData d WHERE d.receivedTime BETWEEN :startDate AND :endDate")
+    @Query("SELECT COALESCE(MAX(d.windSpeed), 0) FROM AnemoData d WHERE d.receivedTime BETWEEN :startDate AND :endDate")
     float findMaxSpeedByDate(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 }
