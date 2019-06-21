@@ -1,15 +1,15 @@
 /*------------------------------------------------------------------------------
  * @author ahanqiankun@aliyun.com
  *----------------------------------------------------------------------------*/
-package com.tingken.acs.remote.player;
+package com.tingken.acs.remote.player.pojo;
 
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The purpose of this class is ...
- * TODO javadoc for class TermStateListResult
+ * The purpose of this class is to encapsulate the result in getting
+ * term state list from the player system.
  */
 public class TermStateListResult extends PlayerResult {
     public static class TermState {

@@ -25,6 +25,13 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tingken.acs.remote.player.pojo.GroupsResult;
+import com.tingken.acs.remote.player.pojo.LoginInfo;
+import com.tingken.acs.remote.player.pojo.LoginResult;
+import com.tingken.acs.remote.player.pojo.PlayerResult;
+import com.tingken.acs.remote.player.pojo.TermIdListResult;
+import com.tingken.acs.remote.player.pojo.TermStateListResult;
+import com.tingken.acs.remote.player.pojo.TextPlayInfo;
 
 /**
  * The purpose of this class is to encapsulate rest API to access

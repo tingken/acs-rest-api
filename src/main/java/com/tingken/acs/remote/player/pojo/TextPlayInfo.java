@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
  * @author ahanqiankun@aliyun.com
  *----------------------------------------------------------------------------*/
-package com.tingken.acs.remote.player;
+package com.tingken.acs.remote.player.pojo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The purpose of this class is ...
- * TODO javadoc for class TextPlayInfo
+ * The purpose of this class is to encapsulate the text play
+ * information to send the request to the player system.
  */
 @JsonInclude(value = Include.NON_NULL)
 public class TextPlayInfo {

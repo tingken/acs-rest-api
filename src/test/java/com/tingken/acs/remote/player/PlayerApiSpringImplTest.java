@@ -13,6 +13,11 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tingken.acs.remote.player.pojo.GroupsResult;
+import com.tingken.acs.remote.player.pojo.PlayerResult;
+import com.tingken.acs.remote.player.pojo.TermIdListResult;
+import com.tingken.acs.remote.player.pojo.TermStateListResult;
+import com.tingken.acs.remote.player.pojo.TextPlayInfo;
 
 /**
  * The purpose of this class is to test PlayerApiSpringImpl.

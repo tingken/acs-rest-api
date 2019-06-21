@@ -11,6 +11,10 @@ import javax.ws.rs.core.Response;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.tingken.acs.remote.anemo.pojo.AnemoResult;
+import com.tingken.acs.remote.anemo.pojo.LoginInfo;
+import com.tingken.acs.remote.anemo.pojo.LoginResult;
+
 /**
  * The purpose of this class is to encapsulate rest API to get
  * anemometer data.

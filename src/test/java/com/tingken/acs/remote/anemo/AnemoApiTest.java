@@ -13,6 +13,8 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tingken.acs.remote.anemo.pojo.AnemoResult;
+import com.tingken.acs.remote.anemo.pojo.LoginResult;
 
 /**
  * The purpose of this class is to test AnemoApi.

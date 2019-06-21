@@ -27,10 +27,10 @@ import com.tingken.acs.domain.AlarmDevice;
 import com.tingken.acs.domain.AlarmNotice;
 import com.tingken.acs.domain.AlarmPlan;
 import com.tingken.acs.remote.player.PlayerApi;
-import com.tingken.acs.remote.player.PlayerResult;
-import com.tingken.acs.remote.player.TermStateListResult;
-import com.tingken.acs.remote.player.TermStateListResult.TermState;
-import com.tingken.acs.remote.player.TextPlayInfo;
+import com.tingken.acs.remote.player.pojo.PlayerResult;
+import com.tingken.acs.remote.player.pojo.TermStateListResult;
+import com.tingken.acs.remote.player.pojo.TextPlayInfo;
+import com.tingken.acs.remote.player.pojo.TermStateListResult.TermState;
 import com.tingken.acs.service.AlarmNoticeRepository;
 import com.tingken.acs.service.AlarmPlanRepository;
 

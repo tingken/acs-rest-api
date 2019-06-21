@@ -1,11 +1,11 @@
 /*------------------------------------------------------------------------------
  * @author ahanqiankun@aliyun.com
  *----------------------------------------------------------------------------*/
-package com.tingken.acs.remote.anemo;
+package com.tingken.acs.remote.anemo.pojo;
 
 /**
- * The purpose of this class is ...
- * TODO javadoc for class AnemoData
+ * The purpose of this class is to encapsulate the result in getting
+ * anemometer data.
  */
 public class AnemoResult {
     public static class AnemoDataItem {

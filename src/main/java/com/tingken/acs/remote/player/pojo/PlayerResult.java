@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
  * @author ahanqiankun@aliyun.com
  *----------------------------------------------------------------------------*/
-package com.tingken.acs.remote.player;
+package com.tingken.acs.remote.player.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -1,14 +1,15 @@
 /*------------------------------------------------------------------------------
  * @author ahanqiankun@aliyun.com
  *----------------------------------------------------------------------------*/
-package com.tingken.acs.remote.player;
+package com.tingken.acs.remote.player.pojo;
 
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The purpose of this class is to
+ * The purpose of this class is to encapsulate the result in getting
+ * the group information of players.
  */
 public class GroupsResult extends PlayerResult {
     public static class Group {

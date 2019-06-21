@@ -12,6 +12,13 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.tingken.acs.remote.player.pojo.GroupsResult;
+import com.tingken.acs.remote.player.pojo.LoginInfo;
+import com.tingken.acs.remote.player.pojo.PlayerResult;
+import com.tingken.acs.remote.player.pojo.TermIdListResult;
+import com.tingken.acs.remote.player.pojo.TermStateListResult;
+import com.tingken.acs.remote.player.pojo.TextPlayInfo;
+
 /**
  * The purpose of this class is to encapsulate rest API to access
  * players system.

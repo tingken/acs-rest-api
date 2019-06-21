@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
  * @author ahanqiankun@aliyun.com
  *----------------------------------------------------------------------------*/
-package com.tingken.acs.remote.anemo;
+package com.tingken.acs.remote.anemo.pojo;
 
 /**
  * This class is a pojo to save the data from the login to Anemometer

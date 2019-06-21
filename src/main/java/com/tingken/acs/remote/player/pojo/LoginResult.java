@@ -1,13 +1,13 @@
 /*------------------------------------------------------------------------------
  * @author ahanqiankun@aliyun.com
  *----------------------------------------------------------------------------*/
-package com.tingken.acs.remote.player;
+package com.tingken.acs.remote.player.pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The purpose of this class is ...
- * TODO javadoc for class LoginResult
+ * The purpose of this class is to encapsulate the result in logging
+ * to the player system.
  */
 public class LoginResult extends PlayerResult {
     @JsonProperty("JSessionID")

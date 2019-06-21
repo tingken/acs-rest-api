@@ -1,18 +1,14 @@
 /*------------------------------------------------------------------------------
  * @author ahanqiankun@aliyun.com
  *----------------------------------------------------------------------------*/
-package com.tingken.acs.remote.player;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+package com.tingken.acs.remote.anemo.pojo;
 
 /**
  * This class is a pojo to save the data used in login to Anemometer
  * system.
  */
 public class LoginInfo {
-    @JsonProperty("User")
     private String username;
-    @JsonProperty("Passwd")
     private String password;
 
     /**

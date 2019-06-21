@@ -1,12 +1,16 @@
 /*------------------------------------------------------------------------------
  * @author ahanqiankun@aliyun.com
  *----------------------------------------------------------------------------*/
-package com.tingken.acs.remote.player;
+package com.tingken.acs.remote.player.pojo;
 
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * The purpose of this class is to encapsulate the result in getting
+ * termId list from the player system.
+ */
 public class TermIdListResult extends PlayerResult {
     @JsonProperty("TermIds")
     private ArrayList<Integer> termIds = new ArrayList<Integer>();
