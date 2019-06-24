@@ -132,7 +132,7 @@ public class AlarmPlan {
     /**
      * @param volume The volume to set.
      */
-    public void setVolume(int volume) {
+    public void setVolume(Integer volume) {
         this.volume = volume;
     }
 
