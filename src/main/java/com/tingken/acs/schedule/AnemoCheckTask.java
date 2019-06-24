@@ -24,7 +24,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronTrigger;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import com.tingken.acs.domain.AlarmDevice;
@@ -44,7 +43,6 @@ import com.tingken.acs.service.SystemSettingRepository;
  * The purpose of this class is to schedule a task to check plans and
  * data for making alarm notices.
  */
-@Component
 @Configuration
 @EnableScheduling
 public class AnemoCheckTask implements SchedulingConfigurer {

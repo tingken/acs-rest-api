@@ -34,14 +34,17 @@ public class JdbcSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
-    @Autowired
-    private CustomAccessDeniedHandler accessDeniedHandler;
+//    @Autowired
+//    private CustomAccessDeniedHandler accessDeniedHandler;
+//
+//    @Autowired
+//    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+//
+//    @Autowired
+//    private MySavedRequestAwareAuthenticationSuccessHandler mySuccessHandler;
 
     @Autowired
-    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
-
-    @Autowired
-    private MySavedRequestAwareAuthenticationSuccessHandler mySuccessHandler;
+    PasswordEncoder passwordEncoder;
 
     private SimpleUrlAuthenticationFailureHandler myFailureHandler = new SimpleUrlAuthenticationFailureHandler();
 
@@ -60,9 +63,9 @@ public class JdbcSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(passwordEncoder());
-//                .withUser("user").password(passwordEncoder().encode("password")).roles("USER").and()
-//                .withUser("admin").password(passwordEncoder().encode("password")).roles("ADMIN");
+        auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(passwordEncoder);
+//                .withUser("user").password(passwordEncoder.encode("password")).roles("USER").and()
+//                .withUser("admin").password(passwordEncoder.encode("password")).roles("ADMIN");
         //        super.configure(auth);
     }
 
@@ -71,10 +74,11 @@ public class JdbcSecurityConfig extends WebSecurityConfigurerAdapter {
         //        super.configure(http);
         http.cors().and().csrf().disable().authorizeRequests().antMatchers("/systemSettings/**").hasRole("ADMIN")
                 .antMatchers("/**/login*").permitAll()
+                .antMatchers("/index*").permitAll()
                 .antMatchers("/acs/**").authenticated().and().exceptionHandling()
-                .accessDeniedHandler(accessDeniedHandler).authenticationEntryPoint(restAuthenticationEntryPoint).and()
+                .accessDeniedHandler(accessDeniedHandler()).authenticationEntryPoint(restAuthenticationEntryPoint()).and()
                 .formLogin().loginPage("/login.html").loginProcessingUrl("/acs/perform_login")
-                .successHandler(mySuccessHandler)
+                .successHandler(mySuccessHandler())
                 .failureHandler(myFailureHandler)
                 .and().httpBasic();
     }
@@ -93,8 +97,18 @@ public class JdbcSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    CustomAccessDeniedHandler accessDeniedHandler() {
+        return new CustomAccessDeniedHandler();
+    }
+
+    @Bean
+    RestAuthenticationEntryPoint restAuthenticationEntryPoint() {
+        return new RestAuthenticationEntryPoint();
+    }
+
+    @Bean
+    MySavedRequestAwareAuthenticationSuccessHandler mySuccessHandler() {
+        return new MySavedRequestAwareAuthenticationSuccessHandler();
     }
 
 }

@@ -9,12 +9,15 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.rest.core.event.ValidatingRepositoryEventListener;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tingken.acs.auth.AuthFilter;
 import com.tingken.acs.auth.AuthInterceptor;
+import com.tingken.acs.auth.security.LicenceValidateTool;
 import com.tingken.acs.service.around.AlarmDeviceValidator;
 
 @SpringBootApplication
@@ -63,6 +66,16 @@ public class AcsApplication implements WebMvcConfigurer, RepositoryRestConfigure
     @Bean
     AlarmDeviceValidator alarmDeviceValidator() {
         return new AlarmDeviceValidator();
+    }
+
+    @Bean
+    LicenceValidateTool licenceValidateTool() {
+        return new LicenceValidateTool();
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }

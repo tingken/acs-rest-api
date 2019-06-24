@@ -46,9 +46,9 @@ public class MD5Util {
     }  
 //    e9bc0e13a8a16cbb07b175d92a113126
     // 测试主函数  
-    public static void main(String args[]) {  
-        String s = new String("me1989");  
-        System.out.println("原始1：" + s);  
-        System.out.println("MD5后：" + string2MD5(s));  
-    }  
+//    public static void main(String args[]) {  
+//        String s = new String("me1989");  
+//        System.out.println("原始1：" + s);  
+//        System.out.println("MD5后：" + string2MD5(s));  
+//    }  
 }  

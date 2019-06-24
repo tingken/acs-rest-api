@@ -3,7 +3,6 @@
  *----------------------------------------------------------------------------*/
 package com.tingken.acs.schedule;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.annotation.Resource;
@@ -12,7 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
 import com.tingken.acs.domain.AnemoData;
 import com.tingken.acs.domain.Anemograph;
@@ -29,7 +27,6 @@ import com.tingken.acs.service.SystemSettingRepository;
  * The purpose of this class is to schedule a task to collecting data
  * from anemometer system.
  */
-@Component
 @Configuration
 @EnableScheduling
 public class CollectDataTask {

@@ -87,8 +87,91 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>com.github.wvengen</groupId>
+                <artifactId>proguard-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>proguard</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <proguardVersion>5.3.3</proguardVersion>
+                    <injar>${project.build.finalName}.jar</injar>
+                    <outjar>${project.build.finalName}.jar</outjar>
+                    <obfuscate>true</obfuscate>
+                    <options>
+                        <option>-dontshrink</option>
+                        <option>-dontoptimize</option>
+                        <!-- This option will replace all strings in reflections method invocations with new class names. For example, invokes Class.forName('className') -->
+                        <option>-adaptclassstrings</option>
+                        <!-- This option will save all original annotations and etc. Otherwise all we be removed from files. -->
+                        <option>-keepattributes Exceptions,InnerClasses,Signature,Deprecated,
+                            *Annotation*,EnclosingMethod</option>
+                        <!-- This option will save all original names in interfaces (without obfuscate). -->
+                        <option>-keepnames interface **</option>
+                        <!-- This option will save all original methods parameters in files defined in -keep sections, otherwise all parameter names
+                            will be obfuscate. -->
+                        <!-- <option>-keepparameternames</option> -->
+                        <!-- This option will save all original class files (without obfuscate) but obfuscate all in domain package. -->
+                        <option>-keep class com.tingken.acs.domain.** { *; }</option>
+                        <option>-keep class com.tingken.acs.service.customize.** { *; }</option>
+                        <option>-keep class com.tingken.acs.remote.**.pojo.* { *; }</option>
+                        <!-- <option>-keep class org.springframework.boot.** { *; }</option> -->
+                        <!-- This option will save all original interfaces files (without obfuscate) in all packages. -->
+                        <option>-keep interface * extends * { *; }</option>
+                        <!-- This option will save all original defined annotations in all class in all packages. -->
+                        <option>-keepclassmembers class * { @org.springframework.beans.factory.annotation.Value *;
+                            @org.springframework.context.annotation.Bean *; }
+                        </option>
+                        <option>-keepnames class com.tingken.acs.schedule.* { public &lt;init&gt;(); }</option>
+                        <option>-keepnames class com.tingken.acs.auth.JdbcSecurityConfig { public &lt;init&gt;(); }</option>
+                        <option>-keepnames class com.tingken.acs.controller.** { public &lt;init&gt;(); }</option>
+                        <option>-keepnames class com.tingken.acs.AcsApplication { public &lt;init&gt;(); public static &lt;methods&gt;; }</option>
+                    </options>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>javax.xml.bind</groupId><artifactId>jaxb-api</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>net.bytebuddy</groupId><artifactId>byte-buddy</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.apache.logging.log4j</groupId><artifactId>log4j-api</artifactId>
+                        </exclusion>
+                        <!-- <exclusion>
+                            <groupId>org.springframework.boot</groupId><artifactId>*</artifactId>
+                        </exclusion> -->
+                    </exclusions>
+                    <libs> <!-- Include main JAVA library required. -->
+                        <lib>${java.home}/lib/rt.jar</lib>
+                        <lib>${java.home}/lib/jce.jar</lib>
+                    </libs>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.sf.proguard</groupId>
+                        <artifactId>proguard-base</artifactId>
+                        <version>5.3.3</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>com.tingken.acs.AcsApplication</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

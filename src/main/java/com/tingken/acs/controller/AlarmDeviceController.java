@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tingken.acs.auth.security.LicenceValidateTool;
 import com.tingken.acs.domain.AlarmDevice;
 import com.tingken.acs.remote.player.PlayerApi;
 import com.tingken.acs.remote.player.pojo.GroupsResult;
@@ -27,7 +28,6 @@ import com.tingken.acs.remote.player.pojo.TermStateListResult;
 import com.tingken.acs.remote.player.pojo.GroupsResult.Group;
 import com.tingken.acs.remote.player.pojo.TermStateListResult.TermState;
 import com.tingken.acs.service.AlarmDeviceRepository;
-import com.tingken.acs.service.around.LicenceValidateTool;
 
 @RestController
 @RequestMapping("/acs/api/v1/alarmDevices")

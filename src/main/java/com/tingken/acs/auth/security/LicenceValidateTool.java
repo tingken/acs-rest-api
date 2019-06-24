@@ -1,21 +1,18 @@
 /*------------------------------------------------------------------------------
  * @author ahanqiankun@aliyun.com
  *----------------------------------------------------------------------------*/
-package com.tingken.acs.service.around;
+package com.tingken.acs.auth.security;
 
 import java.util.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
-
 import com.tingken.acs.domain.AlarmDevice;
 
 /**
  * The purpose of this class is to validate license.
  */
-@Component
 public class LicenceValidateTool {
 
     @Value("${acs.licence}")
