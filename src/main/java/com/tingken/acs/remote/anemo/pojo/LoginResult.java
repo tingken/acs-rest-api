@@ -3,10 +3,13 @@
  *----------------------------------------------------------------------------*/
 package com.tingken.acs.remote.anemo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * This class is a pojo to save the data from the login to Anemometer
  * system.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LoginResult {
     public static class Data {
         private int needChangePassword;

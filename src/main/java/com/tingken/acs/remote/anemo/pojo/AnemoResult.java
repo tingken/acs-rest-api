@@ -3,10 +3,13 @@
  *----------------------------------------------------------------------------*/
 package com.tingken.acs.remote.anemo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * The purpose of this class is to encapsulate the result in getting
  * anemometer data.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AnemoResult {
     public static class AnemoDataItem {
         private String factory;
