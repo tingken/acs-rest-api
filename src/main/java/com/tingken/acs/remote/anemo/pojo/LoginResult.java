@@ -20,6 +20,7 @@ public class LoginResult {
         private String des = null;
         private int userLevel;
         private String sysName = null;
+        private String orgParentCode = null;
         private String userUId;
         private String username;
 
@@ -67,6 +68,13 @@ public class LoginResult {
 
         public String getSysName() {
             return sysName;
+        }
+
+        /**
+         * @return Returns the orgParentCode.
+         */
+        public String getOrgParentCode() {
+            return orgParentCode;
         }
 
         public String getUserUId() {
@@ -121,6 +129,13 @@ public class LoginResult {
 
         public void setSysName(String sysName) {
             this.sysName = sysName;
+        }
+
+        /**
+         * @param orgParentCode The orgParentCode to set.
+         */
+        public void setOrgParentCode(String orgParentCode) {
+            this.orgParentCode = orgParentCode;
         }
 
         public void setUserUId(String userUId) {
