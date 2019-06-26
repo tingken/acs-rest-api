@@ -7,6 +7,7 @@ import java.util.Date;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,13 +16,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronTrigger;
-import org.springframework.util.StringUtils;
 
 import com.tingken.acs.domain.Constants;
 import com.tingken.acs.domain.SystemSetting;
 import com.tingken.acs.service.AlarmNoticeRepository;
-import com.tingken.acs.service.AlarmPlanRepository;
-import com.tingken.acs.service.AnemoDataRepository;
 import com.tingken.acs.service.SystemSettingRepository;
 
 /**
@@ -60,9 +58,10 @@ public class NoticeClearTask implements SchedulingConfigurer {
                     // get configuration
                     SystemSetting cronConfig = systemSettingRepository.findByConfigName(Constants.ALARM_NOTICE_CLEAR_CRON);
                     // verify configuration
-                    if (cronConfig == null || StringUtils.isEmpty(cronConfig.getValue())) {
+                    if (cronConfig == null || StringUtils.isBlank(cronConfig.getValue())) {
                         logger.error(
-                                "The system configuration '" + Constants.ALARM_NOTICE_CLEAR_CRON + "' IS EMPTY now");
+                                "The system configuration '" + Constants.ALARM_NOTICE_CLEAR_CRON
+                                        + "' IS EMPTY or BLANK now");
                         return null;
                     }
                     // return schedule

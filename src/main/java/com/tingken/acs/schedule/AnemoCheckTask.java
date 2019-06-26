@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TemporalType;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,12 +25,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronTrigger;
-import org.springframework.util.StringUtils;
 
 import com.tingken.acs.domain.AlarmDevice;
 import com.tingken.acs.domain.AlarmNotice;
 import com.tingken.acs.domain.AlarmPlan;
 import com.tingken.acs.domain.Constants;
+import com.tingken.acs.domain.SystemSetting;
 import com.tingken.acs.remote.player.PlayerApi;
 import com.tingken.acs.remote.player.PlayerApiSpringImpl;
 import com.tingken.acs.remote.player.pojo.PlayerResult;
@@ -71,7 +72,7 @@ public class AnemoCheckTask implements SchedulingConfigurer {
     }
 
     /**
-     * 执行定时任务.
+     * Add a scheduled task.
      */
     @Override
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
@@ -82,14 +83,17 @@ public class AnemoCheckTask implements SchedulingConfigurer {
                 // set task schedule
                 triggerContext -> {
                     // get configuration
-                    String cron = systemSettingRepository.findByConfigName(Constants.ANEMO_ALARM_CHECK_CRON).getValue();
+                    SystemSetting cronConfig = systemSettingRepository
+                            .findByConfigName(Constants.ANEMO_ALARM_CHECK_CRON);
                     // verify configuration
-                    if (StringUtils.isEmpty(cron)) {
+                    if (cronConfig == null || StringUtils.isBlank(cronConfig.getValue())) {
                         logger.error(
-                                "The system configuration '" + Constants.ANEMO_ALARM_CHECK_CRON + "' IS EMPTY now");
+                                "The system configuration '" + Constants.ANEMO_ALARM_CHECK_CRON
+                                        + "' IS EMPTY or BLANK now");
+                        return null;
                     }
                     // return schedule
-                    return new CronTrigger(cron).nextExecutionTime(triggerContext);
+                    return new CronTrigger(cronConfig.getValue()).nextExecutionTime(triggerContext);
                 });
     }
 
