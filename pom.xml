@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.tingken</groupId>
     <artifactId>acs-rest-api</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>acs-rest-api</name>
     <description>ACS restful API</description>
 
