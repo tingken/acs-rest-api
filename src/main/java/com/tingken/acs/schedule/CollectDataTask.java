@@ -71,7 +71,11 @@ public class CollectDataTask {
 
     @Bean
     public AnemoApi anemoApiJsrImpl() {
-        String uri = systemSettingRepository.findByConfigName(Constants.ANEMO_DATA_SERVER_URI).getValue();
+        String uri = "";
+        SystemSetting uriConfig = systemSettingRepository.findByConfigName(Constants.ANEMO_DATA_SERVER_URI);
+        if (uriConfig != null) {
+            uri = uriConfig.getValue();
+        }
         return new AnemoApiJsrImpl(uri);
     }
 }

@@ -99,7 +99,11 @@ public class AnemoCheckTask implements SchedulingConfigurer {
 
     @Bean
     public PlayerApi playerApi() {
-        String uri = systemSettingRepository.findByConfigName(Constants.BROAD_CAST_SERVER_URI).getValue();
+        String uri = "";
+        SystemSetting uriConfig = systemSettingRepository.findByConfigName(Constants.BROAD_CAST_SERVER_URI);
+        if (uriConfig != null) {
+            uri = uriConfig.getValue();
+        }
         return new PlayerApiSpringImpl(uri);
     }
 
